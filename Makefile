@@ -11,7 +11,8 @@ SRC	=	src/main.c		\
 		src/sort.c		\
 		src/pars.c		\
 		src/free.c		\
-		src/struct.c
+		src/struct.c		\
+		src/print.c
 
 OBJ	=	$(SRC:.c=.o)
 

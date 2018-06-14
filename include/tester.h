@@ -20,5 +20,6 @@ save_s *create_save(void);
 int size_struct(save_s *);
 int struct_print(save_s *);
 int free_struct(save_s *);
+int special_print(save_s *);
 
 #endif

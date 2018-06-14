@@ -31,7 +31,8 @@ int main(int ac, char **av)
 		ftw(av[1], test_function, 20);
 		save = create_save();
 		qsort(save, size_struct(save), sizeof(*save), sort_struct);
-		struct_print(save);
+		special_print(save);
+//		struct_print(save);
 		free_struct(save);
 		remove(".tmp.txt");
 	}
