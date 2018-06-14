@@ -66,7 +66,7 @@ int fnd_slash(char *str)
 	return (nb);
 }
 
-int special_print(save_s *save)
+int tree_print(save_s *save)
 {
 	int i = 0;
 	char *path = NULL;

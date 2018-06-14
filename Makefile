@@ -12,7 +12,10 @@ SRC	=	src/main.c		\
 		src/pars.c		\
 		src/free.c		\
 		src/struct.c		\
-		src/print.c
+		src/print.c		\
+		src/command.c		\
+		src/fnd_bin.c		\
+		src/str_to_word_tab.c
 
 OBJ	=	$(SRC:.c=.o)
 
