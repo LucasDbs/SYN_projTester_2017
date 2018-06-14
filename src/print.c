@@ -21,7 +21,7 @@ char *create_hyphen(int nb)
 	return (res);
 }
 
-char *make_hyphen(char *str)
+char *make_hyphen(char *str, int slash)
 {
 	int i = 0;
 	int nb = 0;
@@ -34,7 +34,7 @@ char *make_hyphen(char *str)
 			nb++;
 		i++;
 	}
-	return (create_hyphen(nb));
+	return (create_hyphen(nb - slash));
 }
 
 char *rework_path(char *str)
@@ -53,15 +53,29 @@ char *rework_path(char *str)
 	return (res);
 }
 
+int fnd_slash(char *str)
+{
+	int i = 0;
+	int nb = 0;
+
+	while (str[i]) {
+		if (str[i] == '/' && str[i - 1] != '.')
+			nb++;
+		i++;
+	}
+	return (nb);
+}
+
 int special_print(save_s *save)
 {
 	int i = 0;
 	char *path = NULL;
 	char *hyphen = NULL;
+	int nb_slash = fnd_slash(save[0].name);
 
 	while (save[i].name) {
 		path = rework_path(save[i].name);
-		hyphen = make_hyphen(save[i].name);
+		hyphen = make_hyphen(save[i].name, nb_slash);
 		printf("%s%s\n", hyphen, path);
 		free(path);
 		free(hyphen);
