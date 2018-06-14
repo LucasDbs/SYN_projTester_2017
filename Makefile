@@ -8,7 +8,10 @@
 NAME	=	projTester
 
 SRC	=	src/main.c		\
-		src/sort.c
+		src/sort.c		\
+		src/pars.c		\
+		src/free.c		\
+		src/struct.c
 
 OBJ	=	$(SRC:.c=.o)
 

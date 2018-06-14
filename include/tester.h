@@ -15,5 +15,10 @@ typedef struct save_s
 } save_s;
 
 int sort_struct(void const *, void const *);
+int pars_command(int, char **);
+save_s *create_save(void);
+int size_struct(save_s *);
+int struct_print(save_s *);
+int free_struct(save_s *);
 
 #endif
