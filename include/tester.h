@@ -11,7 +11,8 @@
 typedef struct save_s
 {
 	int type;
-	char *name; 
+	char *name;
+	char **args;
 } save_s;
 
 int sort_struct(void const *, void const *);
@@ -25,5 +26,12 @@ int tree_print(save_s *);
 int check_command(int, char **);
 int fnd_bin(char *);
 char **str_to_word_tab(char const *, char);
+int check_args(save_s *, char *);
+int rework_first(char **, char);
+int exec_test(save_s, char *, char *);
+int delete_ext(char *);
+int total_size(char **);
+int exec_process(char *, save_s);
+char **fnd_path(void);
 
 #endif

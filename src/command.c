@@ -25,14 +25,23 @@ int check_command(int ac, char **av)
 {
 	save_s *save = NULL;
 
+	ftw(av[1], search_function, 20);
+	save = create_save();
+	qsort(save, size_struct(save), sizeof(*save), sort_struct);
 	if (ac == 2) {
-		ftw(av[1], search_function, 20);
-		save = create_save();
-		qsort(save, size_struct(save), sizeof(*save), sort_struct);
 		tree_print(save);
-		free_struct(save);
-		remove(".tmp.txt");
-	} else if (ac == 3)
-		return (fnd_bin(av[2]));
+	} else if (ac == 3) {
+		if (fnd_bin(av[2]) == 1) {
+			free_struct(save);
+			remove(".tmp.txt");
+			return (1);
+		}
+	}
+	remove(".tmp.txt");
+	free_struct(save);
 	return (0);
 }
+
+/*else {
+	check_args(save, av[2]);
+}*/

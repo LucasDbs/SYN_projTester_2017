@@ -12,10 +12,14 @@ SRC	=	src/main.c		\
 		src/pars.c		\
 		src/free.c		\
 		src/struct.c		\
-		src/print.c		\
+		src/tree_print.c		\
 		src/command.c		\
 		src/fnd_bin.c		\
-		src/str_to_word_tab.c
+		src/str_to_word_tab.c	\
+		src/fnd_args.c		\
+		src/args_print.c	\
+		src/other.c		\
+		src/exec_process.c
 
 OBJ	=	$(SRC:.c=.o)
 

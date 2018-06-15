@@ -14,17 +14,19 @@ extern char **environ;
 #include <dirent.h>
 #include "tester.h"
 
-int rework_first(char *str)
+int rework_first(char **tab, char c)
 {
 	int i = 0;
 	int a = 0;
 
-	while (str[i] != '=')
+	if (tab == NULL)
+		return (0);
+	while (tab[0][i] != c)
 		i++;
 	i++;
-	while (str[i])
-		str[a++] = str[i++];
-	str[a] = '\0';
+	while (tab[0][i])
+		tab[0][a++] = tab[0][i++];
+	tab[0][a] = '\0';
 	return (0);
 }
 
@@ -61,7 +63,7 @@ int check_path(char *bin)
 	int i = 0;
 	char **path = fnd_path();
 
-	rework_first(path[0]);
+	rework_first(path, '=');
 	while (path[i]) {
 		path[i] = realloc(path[i], (strlen(path[i]) + strlen(bin) + 2));
 		path[i] = strcat(path[i], "/");
@@ -75,11 +77,12 @@ int fnd_bin(char *bin)
 {
 	DIR *dir = opendir(".");
 	struct dirent *ep;
-	char **tmp = malloc(sizeof(char *) * 2);
+	char **tmp = NULL;
 
 	while ((ep = readdir(dir)) != NULL) {
 		if (strcmp(bin, ep->d_name) == 0) {
 			closedir(dir);
+			tmp = malloc(sizeof(char *) * 2);
 			tmp[0] = strdup(bin);
 			tmp[1] = NULL;
 			return (check_acces(tmp));

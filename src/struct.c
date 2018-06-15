@@ -10,11 +10,13 @@
 #include <stdio.h>
 #include "tester.h"
 
-int struct_print(save_s *tab)
+int tab_print(char **tab)
 {
-	for (int i = 0; tab[i].name; i++) {
-		printf("tab[%d]->name = %s\n", i, tab[i].name);
-		printf("tab[%d]->type = %d\n", i, tab[i].type);
+	if (tab == NULL)
+		return (0);
+	for (int i = 0; tab[i] != NULL; i++)
+	{
+		printf("args[%d] = %s\n", i, tab[i]);
 	}
 	return (0);
 }
@@ -70,6 +72,7 @@ save_s *create_save(void)
 	while ((end = getline(&res, &size, file)) != -1) {
 		res[end - 1] = '\0';
 		add_to_struct(save, res, &next, &a);
+		save[a].args = NULL;
 		next++;
 	}
 	fclose(file);
