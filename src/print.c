@@ -30,7 +30,7 @@ char *make_hyphen(char *str, int slash)
 		i++;
 	i++;
 	while (str[i] != '\0') {
-		if (str[i] == '/')
+		if (str[i] == '/' && str[i - 1] != '.')
 			nb++;
 		i++;
 	}
