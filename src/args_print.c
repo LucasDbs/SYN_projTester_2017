@@ -80,7 +80,7 @@ char *args_line(char **tab)
 	return (new);
 }
 
-int exec_test(save_s save, char *name, char *bin)
+int exec_test(save_s save, char *name, char **av)
 {
 	char *new = delete_principal_path(save.name, name);
 	char **path = create_brackets(new);
@@ -88,13 +88,16 @@ int exec_test(save_s save, char *name, char *bin)
 
 	if (new == NULL || path == NULL)
 		return (0);
-	if (save.args != NULL) {
+	if (av[3] != NULL) {
+		free(new);
+		return (special_output(save, path, av));
+	} else if (save.args != NULL) {
 		while (path[i + 1]) {
 			dprintf(1, "%s ", path[i]);
 			i++;
 		}
 		dprintf(1, "%s: ", path[i]);
-		exec_process(bin, save);
+		exec_process(av[2], save);
 	}
 	free(new);
 	free_tab(path);

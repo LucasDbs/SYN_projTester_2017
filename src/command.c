@@ -32,13 +32,13 @@ int check_command(int ac, char **av)
 	qsort(save, size_struct(save), sizeof(*save), sort_struct);
 	if (ac == 2) {
 		tree_print(save);
-	} else if (ac == 3) {
+	} else if (ac > 2) {
 		if (fnd_bin(av[2]) == 1) {
 			free_struct(save);
 			remove(".tmp.txt");
 			return (1);
 		} else
-			check_args(save, av[2]);
+			check_args(save, av);
 	}
 	remove(".tmp.txt");
 	free_struct(save);

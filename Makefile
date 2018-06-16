@@ -19,7 +19,8 @@ SRC	=	src/main.c			\
 		src/fnd_args.c			\
 		src/args_print.c		\
 		src/other.c			\
-		src/exec_process.c
+		src/exec_process.c		\
+		src/special_output.c
 
 OBJ	=	$(SRC:.c=.o)
 

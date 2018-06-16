@@ -27,14 +27,15 @@ int tree_print(save_s *);
 int check_command(int, char **);
 int fnd_bin(char *);
 char **str_to_word_tab(char const *, char);
-int check_args(save_s *, char *);
+int check_args(save_s *, char **);
 int rework_first(char **, char);
-int exec_test(save_s, char *, char *);
+int exec_test(save_s, char *, char **);
 int delete_ext(char *);
 int total_size(char **);
 int exec_process(char *, save_s);
 char **fnd_path(void);
 void my_putstr(char *, int);
 char **make_args(char *, char **);
+int special_output(save_s, char **, char **);
 
 #endif

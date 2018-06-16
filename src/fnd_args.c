@@ -33,7 +33,7 @@ int add_args(save_s *save)
 	return (0);
 }
 
-int check_args(save_s *save, char *av)
+int check_args(save_s *save, char **av)
 {
 	int i = 0;
 
