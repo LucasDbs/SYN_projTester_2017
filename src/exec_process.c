@@ -10,7 +10,6 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <errno.h>
-#include <stdio.h>
 #include "tester.h"
 
 char **create_path(char *bin)
