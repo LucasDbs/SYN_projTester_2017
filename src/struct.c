@@ -62,6 +62,7 @@ save_s *create_save(void)
 		res[end - 1] = '\0';
 		add_to_struct(save, res, &next, &a);
 		save[a].args = NULL;
+		save[a].input = NULL;
 		next++;
 	}
 	fclose(file);

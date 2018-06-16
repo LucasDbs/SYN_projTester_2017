@@ -15,6 +15,8 @@ int search_function(char const *fpath, const struct stat *sb, int typeflag)
 	(void)sb;
 	FILE *file = fopen(".tmp.txt", "a+");
 
+	if (file == NULL)
+		return (0);
 	fprintf(file, "%s\n", fpath);
 	fprintf(file, "%d\n", typeflag);
 	fclose(file);

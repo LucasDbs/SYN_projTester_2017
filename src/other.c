@@ -23,6 +23,8 @@ char **make_args(char *bin, char **args)
 	int i = 0;
 	int a = 1;
 
+	if (tab == NULL)
+		return (NULL);
 	tab[0] = strdup(bin);
 	while (args[i])
 		tab[a++] = strdup(args[i++]);

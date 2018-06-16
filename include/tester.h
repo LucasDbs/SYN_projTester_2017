@@ -13,6 +13,7 @@ typedef struct save_s
 	int type;
 	char *name;
 	char **args;
+	char *input;
 } save_s;
 
 int sort_struct(void const *, void const *);

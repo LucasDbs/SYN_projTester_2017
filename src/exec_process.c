@@ -45,6 +45,8 @@ int child_process(save_s save, char *bin)
 	int a = access_test(path);
 	char **new_args = make_args(bin, save.args);
 
+	if (path == NULL || new_args == NULL || strcmp("cat", bin) == 0)
+		return (0);
 	if (a == -1) {
 		kill(getpid(), 15);
 		return (1);

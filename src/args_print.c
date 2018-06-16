@@ -33,6 +33,8 @@ char *add_bracket(char *str)
 	int i = 0;
 	int a = 0;
 
+	if (new == NULL)
+		return (NULL);
 	new[a++] = '[';
 	while (str[i])
 		new[a++] = str[i++];
@@ -47,6 +49,8 @@ char **create_brackets(char *path)
 	char **tab = str_to_word_tab(path, '/');
 	int i = 0;
 
+	if (tab == NULL)
+		return (NULL);
 	while (tab[i + 1]) {
 		tab[i] = add_bracket(tab[i]);
 		i++;
@@ -82,6 +86,8 @@ int exec_test(save_s save, char *name, char *bin)
 	char **path = create_brackets(new);
 	int i = 0;
 
+	if (new == NULL || path == NULL)
+		return (0);
 	if (save.args != NULL) {
 		while (path[i + 1]) {
 			dprintf(1, "%s ", path[i]);

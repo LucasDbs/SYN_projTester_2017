@@ -11,27 +11,26 @@
 #include <stdlib.h>
 #include "tester.h"
 
-char **add_args(char *path)
+int add_args(save_s *save)
 {
-	FILE *file = fopen(path, "r");
+	FILE *file = fopen(save->name, "r");
 	char *res = NULL;
 	size_t size;
-	char **tab = NULL;
 	int end = 0;
 
+	if (file == NULL)
+		return (84);
 	while ((end = getline(&res, &size, file)) != EOF) {
 		if (res[end - 1] == '\n')
 			res[end - 1] = '\0';
-		if (strncmp("ARGS:", res, 5) == 0) {
-			tab = str_to_word_tab(res, ' ');
-			fclose(file);
-			free(res);
-			return (tab);
-		}
+		if (strncmp("ARGS:", res, 5) == 0)
+			save->args = str_to_word_tab(res, ' ');
+		else if (strncmp("INPUT:", res, 6) == 0)
+			save->input = strdup(res);
 	}
 	free(res);
 	fclose(file);
-	return (NULL);
+	return (0);
 }
 
 int check_args(save_s *save, char *av)
@@ -40,7 +39,7 @@ int check_args(save_s *save, char *av)
 
 	while (save[i].name) {
 		if (save[i].type == FTW_F) {
-			save[i].args = add_args(save[i].name);
+			add_args(&save[i]);
 			rework_first(save[i].args, ':');
 			exec_test(save[i], save[0].name, av);
 		}

@@ -15,6 +15,8 @@ char *create_hyphen(int nb)
 	char *res = malloc(sizeof(char) * ((5 * nb) + 1));
 	int i = 0;
 
+	if (res == NULL)
+		return (NULL);
 	while (i < (nb * 5))
 		res[i++] = '-';
 	res[i] = '\0';
