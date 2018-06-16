@@ -44,16 +44,12 @@ int child_process(save_s save, char *bin)
 {
 	char **path = create_path(bin);
 	int a = access_test(path);
+	char **new_args = make_args(bin, save.args);
 
-	for (int i = 0; save.args[i] != NULL; i++)
-	{
-		printf("path[%d] = %s\n", i, save.args[i]);
-		printf("size = %ld\n", strlen(save.args[i]));
-	}
 	if (a == -1) {
 		kill(getpid(), 15);
 		return (1);
-	} else if (execve(path[a], save.args, NULL) == -1)
+	} else if (execve(path[a], new_args, NULL) == -1)
 		return (1);
 	return (0);
 }

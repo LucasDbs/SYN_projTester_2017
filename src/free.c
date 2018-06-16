@@ -15,7 +15,7 @@ int free_tab(char **tab)
 	for (int i = 0; tab[i]; i++)
 		free(tab[i]);
 	free(tab);
-	return (0);	
+	return (0);
 }
 
 int free_struct(save_s *tab)

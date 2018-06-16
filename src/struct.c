@@ -10,17 +10,6 @@
 #include <stdio.h>
 #include "tester.h"
 
-int tab_print(char **tab)
-{
-	if (tab == NULL)
-		return (0);
-	for (int i = 0; tab[i] != NULL; i++)
-	{
-		printf("args[%d] = %s\n", i, tab[i]);
-	}
-	return (0);
-}
-
 int size_struct(save_s *tab)
 {
 	int i = 0;

@@ -33,5 +33,7 @@ int delete_ext(char *);
 int total_size(char **);
 int exec_process(char *, save_s);
 char **fnd_path(void);
+void my_putstr(char *, int);
+char **make_args(char *, char **);
 
 #endif

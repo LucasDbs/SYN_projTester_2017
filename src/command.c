@@ -35,13 +35,10 @@ int check_command(int ac, char **av)
 			free_struct(save);
 			remove(".tmp.txt");
 			return (1);
-		}
+		} else
+			check_args(save, av[2]);
 	}
 	remove(".tmp.txt");
 	free_struct(save);
 	return (0);
 }
-
-/*else {
-	check_args(save, av[2]);
-}*/

@@ -84,16 +84,13 @@ int exec_test(save_s save, char *name, char *bin)
 
 	if (save.args != NULL) {
 		while (path[i + 1]) {
+			dprintf(1, "%s ", path[i]);
 			i++;
 		}
+		dprintf(1, "%s: ", path[i]);
 		exec_process(bin, save);
 	}
 	free(new);
 	free_tab(path);
 	return (0);
 }
-
-//	dprintf(1, "%s ", path[i]);
-//	dprintf(1, "%s:", path[i]);
-//	dprintf(1, "\n");
-//	printf("%s: %s\n", path[i], res);

@@ -5,14 +5,14 @@
 ** Found binary
 */
 
-extern char **environ;
-
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
 #include "tester.h"
+
+extern char **environ;
 
 int rework_first(char **tab, char c)
 {

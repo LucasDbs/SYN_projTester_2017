@@ -5,7 +5,32 @@
 ** Other functions
 */
 
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
+
+int tab_size(char **tab)
+{
+	int i = 0;
+
+	while (tab[i])
+		i++;
+	return (i);
+}
+
+char **make_args(char *bin, char **args)
+{
+	char **tab = malloc(sizeof(char *) * (tab_size(args) + 2));
+	int i = 0;
+	int a = 1;
+
+	tab[0] = strdup(bin);
+	while (args[i])
+		tab[a++] = strdup(args[i++]);
+	tab[a] = NULL;
+	return (tab);
+}
 
 int delete_ext(char *str)
 {
